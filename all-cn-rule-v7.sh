@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 输出文件名
-output_file="./route-rule/all-cn-router-V7.rsc"
+output_file="./route-rule/all-cn-router-v7.rsc"
 
 # 清空输出文件
 > "$output_file"
