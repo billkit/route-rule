@@ -1,0 +1,34 @@
+name: "GitHub Actions"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  ddy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: "Working"
+        timeout-minutes: 360
+        run: bash update.sh
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -a -m "⌚️$(date +%Y%m%d%H%M%S)"
+          else
+            echo "No changes to commit"
+        shell: bash
+
+      - name: Push changes
+        if: success() && steps.commit.outputs.committed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
