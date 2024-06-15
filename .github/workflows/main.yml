@@ -17,18 +17,21 @@ jobs:
         run: bash update.sh
 
       - name: Commit files
+        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           if [ -n "$(git status --porcelain)" ]; then
             git commit -a -m "⌚️$(date +%Y%m%d%H%M%S)"
+            echo "::set-output name=changes::true"
           else
             echo "No changes to commit"
+            echo "::set-output name=changes::false"
           fi
         shell: bash
 
       - name: Push changes
-        if: success() && steps.commit.outputs.committed == 'true'
+        if: steps.commit.outputs.changes == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
