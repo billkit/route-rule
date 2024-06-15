@@ -31,7 +31,8 @@ jobs:
         shell: bash
 
       - name: Push changes
-        if: steps.commit.outputs.changes == 'true'
-        run: |
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:refs/heads/${{ github.ref }}
-        shell: bash
+        if: success() && steps.commit.outputs.committed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ACTIONS_TOKEN }}
+          branch: ${{ github.ref }}
