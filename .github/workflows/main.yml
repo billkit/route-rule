@@ -23,10 +23,10 @@ jobs:
           git config --local user.name "GitHub Action"
           if [ -n "$(git status --porcelain)" ]; then
             git commit -a -m "⌚️$(date +%Y%m%d%H%M%S)"
-            echo "::set-output name=changes::true"
+            echo "changes=true" >> $GITHUB_ENV
           else
             echo "No changes to commit"
-            echo "::set-output name=changes::false"
+            echo "changes=false" >> $GITHUB_ENV
           fi
         shell: bash
 
