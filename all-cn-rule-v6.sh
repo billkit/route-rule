@@ -16,7 +16,7 @@ echo "/ip route rule" >> "$output_file"
 if [ -f ./iplist/all-cn.txt ]; then
   while IFS= read -r net; do
     echo "add dst-address=$net action=lookup table=CN" >> "$output_file"
-  done < ./iplist/route-rule/all-cn.txt
+  done < ./iplist/all-cn.txt
 else
   echo "文件 all-cn.txt 未找到." >> "$output_file"
 fi
