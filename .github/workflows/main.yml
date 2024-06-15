@@ -24,6 +24,7 @@ jobs:
             git commit -a -m "⌚️$(date +%Y%m%d%H%M%S)"
           else
             echo "No changes to commit"
+          fi
         shell: bash
 
       - name: Push changes
