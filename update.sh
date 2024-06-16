@@ -12,4 +12,4 @@ bash route-rule-v6.sh
 bash all-cn-rule-v7.sh 
 bash route-rule-v7.sh
 bash oversea-rule-v7.sh
-bash oversea-rule.sh
+bash oversea-rule-v6.sh
