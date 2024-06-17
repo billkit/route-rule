@@ -1,4 +1,4 @@
-:foreach i in=[/ip route rule find ] do=[/ip route rule remove $i]
+:foreach i in=[/ip route rule find table=CN] do=[/ip route rule remove $i]
 /ip route rule
 add dst-address=1.0.1.0/24 action=lookup table=CN
 add dst-address=1.0.2.0/23 action=lookup table=CN
