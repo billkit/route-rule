@@ -1,4 +1,4 @@
-:foreach i in=[/routing rule find ] do=[/routing rule remove $i]
+:foreach i in=[/routing rule find table=OVERSEA] do=[/routing rule remove $i]
 /routing rule
 add dst-address=1.0.0.0/24 action=lookup table=OVERSEA
 add dst-address=1.0.4.0/22 action=lookup table=OVERSEA
