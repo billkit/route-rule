@@ -7,7 +7,7 @@ output_file="./route-rule/oversea-router-v6.rsc"
 > "$output_file"
 
 # 删除现有的所有路由规则
-echo ":foreach i in=[/ip route rule find ] do=[/ip route rule remove \$i]" >> "$output_file"
+echo ":foreach i in=[/ip route rule find table=OVERSEA] do=[/ip route rule remove \$i]" >> "$output_file"
 
 # 进入路由规则配置模式
 echo "/ip route rule" >> "$output_file"
