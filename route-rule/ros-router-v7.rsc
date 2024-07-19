@@ -2412,6 +2412,7 @@ add dst-address=111.0.0.0/10 action=lookup table=CMCC
 add dst-address=112.0.0.0/10 action=lookup table=CMCC
 add dst-address=117.128.0.0/10 action=lookup table=CMCC
 add dst-address=120.192.0.0/10 action=lookup table=CMCC
+add dst-address=175.48.0.0/12 action=lookup table=CMCC
 add dst-address=175.176.188.0/22 action=lookup table=CMCC
 add dst-address=183.192.0.0/10 action=lookup table=CMCC
 add dst-address=211.103.0.0/17 action=lookup table=CMCC
